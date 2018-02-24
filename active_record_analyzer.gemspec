@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ariel Scherman"]
   spec.email         = ["arielscherman@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Analyze an ActiveRecord class to get information about its associations.}
+  spec.description   = %q{Analyze an ActiveRecord class to get information about its associations. You will be able to know all its has_many and belongs_to for instance.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
