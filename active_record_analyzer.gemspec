@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Analyze an ActiveRecord class to get information about its associations.}
   spec.description   = %q{Analyze an ActiveRecord class to get information about its associations. You will be able to know all its has_many and belongs_to for instance.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/arielscherman/active_record_analyzer"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
