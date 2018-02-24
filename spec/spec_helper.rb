@@ -1,4 +1,6 @@
 require "bundler/setup"
+require "pry"
+require "active_record"
 require "active_record_analyzer"
 
 RSpec.configure do |config|
@@ -9,3 +11,8 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
+
+load File.dirname(__FILE__) + '/schema.rb'
+require File.dirname(__FILE__) + '/models.rb'
