@@ -22,7 +22,43 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You can analyze your ActiveRecord model with the analyzer:
+
+```ruby
+analyzer = ActiveRecordAnalyzer::Analyzer.new(User)
+```
+
+With the analyzer in place, given an attribute's name, you can get its type for the given class (`User` in the example):
+
+```ruby
+attribute = analyzer.reflect(:name)
+attribute.association?      # => false
+attribute.simple_attribute? # => true
+```
+
+### Simple attributes
+
+A **Simple Attribute** means basically every attribute except of foreign keys.
+
+```ruby
+analyzer.reflect(:name).simple_attribute?       # => true
+analyzer.reflect(:created_at).simple_attribute? # => true
+analyzer.reflect(:company_id).simple_attribute? # => false
+analyzer.reflect(:company).simple_attribute?    # => false
+analyzer.reflect(:accounts).simple_attribute?   # => false
+```
+
+### Associations
+
+An **Association** means foreign keys and association names.
+
+```ruby
+analyzer.reflect(:name).simple_attribute?       # => false
+analyzer.reflect(:created_at).simple_attribute? # => false
+analyzer.reflect(:company_id).simple_attribute? # => true
+analyzer.reflect(:company).simple_attribute?    # => true
+analyzer.reflect(:accounts).simple_attribute?   # => true
+```
 
 ## Development
 
