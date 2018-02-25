@@ -4,21 +4,28 @@ describe ActiveRecordAnalyzer::Reflector do
   subject(:reflector) { ActiveRecordAnalyzer::Reflector.new(User) }
 
   describe "#reflect" do
-    context "when attribute is not in the model" do
-      it "raises an error" do
-        expect { reflector.reflect(:invalid_attribute) }.to raise_error "There is no invalid_attribute in the class User"
+    context "when no reflector has the given attribute" do
+      it "returns nothing" do
+        expect(reflector.reflect(:non_existing_attribute)).to eq nil
       end
     end
 
-    context "when attribute is a normal attribute" do
-      it "returns an Attribute::Simple" do
-        binding.pry
-        expect(reflector.reflect(:name)).to be_a ActiveRecordAnalyzer::Attribute::Simple
+    context "when a reflector does have the given attribute" do
+      class FooReflector
+        def has_attribute?(_)
+          true
+        end
+
+        def attribute_type
+          :some_type
+        end
+      end
+  
+      before { allow(reflector).to receive(:reflectors).and_return([FooReflector.new]) }
+
+      it "returns the attribute type" do
+        expect(reflector.reflect(:some_attribute)).to eq :some_type
       end
     end
-
-    context "when attribute is a has_many"
-
-    context "when awttribute is a belongs_to"
   end
 end

@@ -7,6 +7,10 @@ class ActiveRecordAnalyzer::Reflector::Simple
     attributes.include?(attribute.to_sym)
   end
 
+  def attribute_type
+    @attribute_type ||= ActiveRecordAnalyzer::Attribute::Simple
+  end
+
   # This returns attributes which are not foreign keys (ex: :name, but not :company_id)
   #
   def attributes
