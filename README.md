@@ -53,11 +53,27 @@ analyzer.reflect(:accounts).simple_attribute?   # => false
 An **Association** means foreign keys and association names.
 
 ```ruby
-analyzer.reflect(:name).simple_attribute?       # => false
-analyzer.reflect(:created_at).simple_attribute? # => false
-analyzer.reflect(:company_id).simple_attribute? # => true
-analyzer.reflect(:company).simple_attribute?    # => true
-analyzer.reflect(:accounts).simple_attribute?   # => true
+analyzer.reflect(:name).association?       # => false
+analyzer.reflect(:created_at).association? # => false
+analyzer.reflect(:company_id).association? # => true
+analyzer.reflect(:company).association?    # => true
+analyzer.reflect(:accounts).association?   # => true
+```
+
+#### belongs_to (One to Many)
+
+```ruby
+analyzer.reflect(:company_id).one_to_many? # => true
+analyzer.reflect(:company).one_to_many?    # => true
+analyzer.reflect(:accounts).one_to_many?   # => false
+```
+
+#### has_many
+
+```ruby
+analyzer.reflect(:company_id).has_many? # => false
+analyzer.reflect(:company).has_many?    # => false
+analyzer.reflect(:accounts).has_many?   # => true
 ```
 
 ## Development
