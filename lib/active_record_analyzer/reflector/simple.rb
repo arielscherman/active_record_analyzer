@@ -30,6 +30,6 @@ class ActiveRecordAnalyzer::Reflector::Simple
   end
 
   def foreign_keys
-    @foreign_keys ||= ActiveRecordAnalyzer::Reflector::Association.new(@klass).attributes
+    @foreign_keys ||= ActiveRecordAnalyzer::Reflector::BelongsTo.new(@klass).attributes
   end
 end

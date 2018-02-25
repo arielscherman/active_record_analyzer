@@ -1,5 +1,5 @@
 class ActiveRecordAnalyzer::Reflector
-  REFLECTORS = %i(association simple).freeze
+  REFLECTORS = %i(belongs_to has_many simple).freeze
 
   def initialize(klass)
     @klass = klass

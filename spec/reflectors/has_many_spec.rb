@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe ActiveRecordAnalyzer::Reflector::Association do
-  subject(:reflector) { ActiveRecordAnalyzer::Reflector::Association.new(User) }
+describe ActiveRecordAnalyzer::Reflector::HasMany do
+  subject(:reflector) { ActiveRecordAnalyzer::Reflector::HasMany.new(User) }
 
   describe "#has_attribute?" do
     context "when attribute is not in the model" do
@@ -24,8 +24,8 @@ describe ActiveRecordAnalyzer::Reflector::Association do
 
     context "when attribute is a belongs_to" do
       it "returns true" do
-        expect(reflector.has_attribute?(:company)).to    be_truthy
-        expect(reflector.has_attribute?(:company_id)).to be_truthy
+        expect(reflector.has_attribute?(:company)).to    be_falsey
+        expect(reflector.has_attribute?(:company_id)).to be_falsey
       end
     end
   end

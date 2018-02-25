@@ -1,10 +1,10 @@
-class ActiveRecordAnalyzer::Attribute::Simple
+class ActiveRecordAnalyzer::Attribute::BelongsTo
   def association?
-    false
+    true
   end
 
   def simple_attribute?
-    true
+    false
   end
 
   def has_many?
@@ -12,6 +12,6 @@ class ActiveRecordAnalyzer::Attribute::Simple
   end
 
   def one_to_many?
-    false
+    true
   end
 end
