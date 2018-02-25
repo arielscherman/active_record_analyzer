@@ -1,17 +1,17 @@
 class ActiveRecordAnalyzer::Attribute::Simple
-  def association?
+  def self.association?
     false
   end
 
-  def simple_attribute?
+  def self.simple_attribute?
     true
   end
 
-  def has_many?
+  def self.has_many?
     false
   end
 
-  def one_to_many?
+  def self.one_to_many?
     false
   end
 end
