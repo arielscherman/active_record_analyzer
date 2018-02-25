@@ -23,7 +23,7 @@ Or install it yourself as:
 You can analyze your ActiveRecord model with the analyzer:
 
 ```ruby
-analyzer = ActiveRecordAnalyzer::Analyzer.new(User)
+analyzer = ActiveRecordAnalyzer::Reflector.new(User)
 ```
 
 With the analyzer in place, given an attribute's name, you can get its type for the given class (`User` in the example):
