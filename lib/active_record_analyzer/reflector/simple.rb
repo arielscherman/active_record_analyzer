@@ -1,20 +1,12 @@
-class ActiveRecordAnalyzer::Reflector::Simple
-  def initialize(klass)
-    @klass = klass
-  end
-
-  def has_attribute?(attribute)
-    attributes.include?(attribute.to_sym)
-  end
-
-  def attribute_type
-    @attribute_type ||= ActiveRecordAnalyzer::Attribute::Simple
-  end
-
+class ActiveRecordAnalyzer::Reflector::Simple < ActiveRecordAnalyzer::Reflector::Base
   # This returns attributes which are not foreign keys (ex: :name, but not :company_id)
   #
   def attributes
     attributes_except_foreign_keys
+  end
+
+  def attribute_type
+    @attribute_type ||= ActiveRecordAnalyzer::Attribute::Simple
   end
 
   private

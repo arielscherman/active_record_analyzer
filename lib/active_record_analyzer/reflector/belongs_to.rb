@@ -1,23 +1,16 @@
-class ActiveRecordAnalyzer::Reflector::BelongsTo
-  def initialize(klass)
-    @klass = klass
-  end
-
-  def has_attribute?(attribute)
-    attributes.include?(attribute.to_sym)
-  end
-
-  def attribute_type
-    @attribute_type ||= ActiveRecordAnalyzer::Attribute::BelongsTo
-  end
-
+class ActiveRecordAnalyzer::Reflector::BelongsTo < ActiveRecordAnalyzer::Reflector::Base
   # This returns foreign_keys and association names (ex: :company_id and :company).
+  #
   def attributes
     @attributes ||= begin
       belongs_to_associations.map do |assoc|
         [assoc.foreign_key.to_sym, assoc.name]
       end.flatten
     end
+  end
+
+  def attribute_type
+    @attribute_type ||= ActiveRecordAnalyzer::Attribute::BelongsTo
   end
 
   private
